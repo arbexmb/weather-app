@@ -16,14 +16,14 @@ weatherForm.addEventListener('submit', (e) => {
             if(data.error) {
                 pOne.innerHTML = '<strong>' + data.error + '</strong>'
             } else {
-                pOne.innerHTML = 'Location: <strong>' + data.location + '</strong>'
+                pOne.innerHTML = 'Now in <strong>' + data.location + '</strong>'
                 pTwo.innerHTML = 'Temperature: <strong>' + data.forecast.temperature + ' ºC</strong>'
                 pTwo.innerHTML += '<br>'
                 pTwo.innerHTML += 'Rain probability: <strong>' + data.forecast.precipProbability.toFixed(1) + '%</strong>'
+                pTwo.innerHTML += '<br>-----<br>'
+                pTwo.innerHTML += 'Today maximum temperature: <strong>' + data.forecast.dailyHigh + ' ºC</strong>'
                 pTwo.innerHTML += '<br>'
-                pTwo.innerHTML += 'Daily high: <strong>' + data.forecast.dailyHigh + ' ºC</strong>'
-                pTwo.innerHTML += '<br>'
-                pTwo.innerHTML += 'Daily low: <strong>' + data.forecast.dailyLow + ' ºC</strong>'
+                pTwo.innerHTML += 'Today minimum temperature: <strong>' + data.forecast.dailyLow + ' ºC</strong>'
             }
         })
     })
