@@ -2,7 +2,6 @@ const weatherForm = document.querySelector('form')
 const searchEl = document.querySelector('input')
 const pOne = document.getElementById('pOne')
 const pTwo = document.getElementById('pTwo')
-const pThree = document.getElementById('pThree')
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -11,7 +10,6 @@ weatherForm.addEventListener('submit', (e) => {
 
     pOne.innerHTML = '<strong>Loading...</strong>'
     pTwo.innerHTML = ''
-    pThree.innerHTML = ''
 
     fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
@@ -20,7 +18,12 @@ weatherForm.addEventListener('submit', (e) => {
             } else {
                 pOne.innerHTML = 'Location: <strong>' + data.location + '</strong>'
                 pTwo.innerHTML = 'Temperature: <strong>' + data.forecast.temperature + ' ºC</strong>'
-                pThree.innerHTML = 'Rain probability: <strong>' + data.forecast.precipProbability.toFixed(1) + '%</strong>'
+                pTwo.innerHTML += '<br>'
+                pTwo.innerHTML += 'Rain probability: <strong>' + data.forecast.precipProbability.toFixed(1) + '%</strong>'
+                pTwo.innerHTML += '<br>'
+                pTwo.innerHTML += 'Daily high: <strong>' + data.forecast.dailyHigh + ' ºC</strong>'
+                pTwo.innerHTML += '<br>'
+                pTwo.innerHTML += 'Daily low: <strong>' + data.forecast.dailyLow + ' ºC</strong>'
             }
         })
     })
